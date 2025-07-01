@@ -30,7 +30,7 @@ It parses authentication logs, detects suspicious behavior (such as repeated SSH
 
 > 📸 _Add a screenshot here after running your dashboard_  
 > Example placeholder:  
-> ![Dashboard Screenshot](soc.png)
+> ![Dashboard Screenshot](Screenshot From 2025-07-02 03-43-46.png)
 
 ---
 
