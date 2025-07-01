@@ -37,6 +37,6 @@ It parses authentication logs, detects suspicious behavior (such as repeated SSH
 ### 1️⃣ Clone the repository
 
 ```bash
-https://github.com/SyedMdAbuHaider/BlueSight-SOC-Dashboard
+https://github.com/SyedMdAbuHaider/BlueSight-SOC
 cd bluesight-soc-dashboard
 
