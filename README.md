@@ -28,8 +28,6 @@ It parses authentication logs, detects suspicious behavior (such as repeated SSH
 
 ## 📊 Dashboard Preview
 
-> 📸 _Add a screenshot here after running your dashboard_  
-> Example placeholder:  
 > ![Dashboard Screenshot](dashboard.png)
 
 ---
