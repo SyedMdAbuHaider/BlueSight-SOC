@@ -1,0 +1,8 @@
+pandas
+flask
+geoip2
+matplotlib
+jinja2
+pdfkit
+plotly
+
