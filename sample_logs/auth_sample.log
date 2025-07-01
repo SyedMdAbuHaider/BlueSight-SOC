@@ -1,0 +1,13 @@
+Jun 30 12:00:01 xmate sshd[1001]: Failed password for invalid user admin from 203.0.113.10 port 44522 ssh2
+Jun 30 12:00:03 xmate sshd[1002]: Failed password for invalid user admin from 203.0.113.10 port 44523 ssh2
+Jun 30 12:00:05 xmate sshd[1003]: Failed password for invalid user admin from 203.0.113.10 port 44524 ssh2
+Jun 30 12:00:07 xmate sshd[1004]: Failed password for invalid user admin from 203.0.113.10 port 44525 ssh2
+Jun 30 12:01:10 xmate sshd[1005]: Failed password for invalid user test from 198.51.100.55 port 55874 ssh2
+Jun 30 12:01:12 xmate sshd[1006]: Failed password for invalid user test from 198.51.100.55 port 55875 ssh2
+Jun 30 12:01:14 xmate sshd[1007]: Failed password for invalid user test from 198.51.100.55 port 55876 ssh2
+Jun 30 12:01:16 xmate sshd[1008]: Failed password for invalid user test from 198.51.100.55 port 55877 ssh2
+Jun 30 12:05:01 xmate sshd[1009]: Accepted password for validuser from 192.0.2.123 port 60220 ssh2
+Jun 30 12:10:01 xmate sshd[1010]: Failed password for root from 203.0.113.10 port 44526 ssh2
+Jun 30 12:10:03 xmate sshd[1011]: Failed password for root from 203.0.113.10 port 44527 ssh2
+Jun 30 12:10:05 xmate sshd[1012]: Failed password for root from 203.0.113.10 port 44528 ssh2
+
