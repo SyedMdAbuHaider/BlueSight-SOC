@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOC Log Analysis Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 30px;
+            background: #1e293b;
+            border-bottom: 2px solid #334155;
+        }
+        header h1 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 2em;
+            color: #38bdf8;
+        }
+        .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+            gap: 20px;
+        }
+        .card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1 1 180px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #38bdf8;
+        }
+        .card p {
+            margin-top: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #cbd5e1;
+        }
+        h2.section-title {
+            text-align: center;
+            margin-top: 50px;
+            font-weight: 600;
+            font-size: 1.5em;
+            color: #38bdf8;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #1e293b;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #334155;
+            text-align: center;
+        }
+        th {
+            background: #334155;
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+        tr:hover {
+            background: #475569;
+        }
+        canvas {
+            display: block;
+            margin: 50px auto;
+            max-width: 90%;
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🚨 SOC Log Analysis Dashboard</h1>
+</header>
+
+<div class="metrics">
+    <div class="card">
+        <h2>{{ total_events }}</h2>
+        <p>Total Events</p>
+    </div>
+    <div class="card" style="background-color: #b91c1c;">
+        <h2>{{ failed_ssh }}</h2>
+        <p>Failed SSH</p>
+    </div>
+    <div class="card" style="background-color: #facc15;">
+        <h2>{{ root_logins }}</h2>
+        <p>Root Logins</p>
+    </div>
+</div>
+
+<h2 class="section-title">Suspicious IP Table</h2>
+{% if suspicious_ips %}
+<table>
+    <tr>
+        <th>IP Address</th>
+        <th>Attempts</th>
+    </tr>
+    {% for ip, count in suspicious_ips.items() %}
+    <tr>
+        <td>{{ ip }}</td>
+        <td>{{ count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p style="text-align: center; color: #22c55e;">✅ No suspicious IPs detected.</p>
+{% endif %}
+
+<canvas id="ipChart" height="200"></canvas>
+
+<script>
+    const ctx = document.getElementById('ipChart').getContext('2d');
+    const chartData = JSON.parse('{{ chart_data | safe }}');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartData.ips,
+            datasets: [{
+                label: 'Failed SSH Attempts',
+                data: chartData.counts,
+                backgroundColor: '#38bdf8',
+                borderColor: '#ffffff',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: '#f1f5f9' },
+                    grid: { color: '#334155' }
+                },
+                x: {
+                    ticks: { color: '#f1f5f9' },
+                    grid: { color: '#334155' }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
+
